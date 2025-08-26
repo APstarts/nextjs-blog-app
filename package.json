@@ -9,11 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@tiptap/extension-bold": "^3.3.0",
+    "@tiptap/extension-italic": "^3.3.0",
+    "@tiptap/extension-strike": "^3.3.0",
     "@tiptap/extension-text-style": "^3.3.0",
     "@tiptap/pm": "^3.3.0",
     "@tiptap/react": "^3.3.0",
     "@tiptap/starter-kit": "^3.3.0",
     "@vercel/postgres": "^0.10.0",
+    "install": "^0.13.0",
     "next": "15.5.0",
     "next-auth": "5.0.0-beta.29",
     "pg": "^8.16.3",

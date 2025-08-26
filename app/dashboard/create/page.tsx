@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import RichTextEditor from "@/components/Tiptap";
+import Tiptap from "@/components/Tiptap";
 
 export default function CreatePostPage() {
   const router = useRouter();
@@ -47,7 +48,7 @@ export default function CreatePostPage() {
         />
 
         {/* Tiptap editor */}
-        <RichTextEditor onChange={setContent} />
+        <Tiptap onChange={setContent}/>
 
         <button
           type="submit"
