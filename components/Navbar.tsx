@@ -1,5 +1,6 @@
 import React from 'react'
 import { signIn, signOut, auth } from "@/auth"
+import NewPostButton from './NewPostButton';
 
 const Navbar = async () => {
     const session = await auth();
