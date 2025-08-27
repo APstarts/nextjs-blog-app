@@ -14,13 +14,14 @@ type Post = {
 export const revalidate = 60; // ISR: regenerate page every 60s
 
 const DashboardPage = async () => {
+  const baseUrl = process.env.NEXTAUTH_URL || window.location.origin;
   const session = await auth();
   if (!session?.user) {
     throw new Error("Unauthorized");
   }
 
   // Fetch posts directly from DB
-  const res = await fetch("/api/posts");
+  const res = await fetch(`${baseUrl}/api/posts`);
   if (!res.ok) throw new Error("Failed to fetch posts");
   const posts = await res.json();
 
