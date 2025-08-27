@@ -1,5 +1,7 @@
-import React from "react";
+'use client';
+
 import Link from "next/link";
+import React from "react";
 
 interface ArticlePrevCardProps {
   id: string;
@@ -17,9 +19,8 @@ const ArticlePrevCard: React.FC<ArticlePrevCardProps> = ({
   image,
 }) => {
   return (
-    <Link href={`/dashboard/${id}`}>
-      <div className="p-4 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center w-3xs">
-        {/* Avatar / image */}
+    <Link href={`/dashboard/${id}`} prefetch>
+      <div className="p-4 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
         {image ? (
           <img
             src={image}
@@ -32,7 +33,6 @@ const ArticlePrevCard: React.FC<ArticlePrevCardProps> = ({
           </div>
         )}
 
-        {/* Content */}
         <div className="flex flex-col">
           <h2 className="text-lg font-semibold">{title}</h2>
           <p className="text-sm text-gray-500">
