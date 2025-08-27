@@ -2,6 +2,15 @@ import { auth } from "@/auth";
 import NewPostButton from "@/components/NewPostButton";
 import ArticlePrevCard from "@/components/ArticlePrevCard";
 
+type Post = {
+  id: string;
+  title: string;
+  author: string;
+  created_at: string; // or Date
+  image?: string;     // optional if images might be missing
+};
+
+
 export const revalidate = 60; // ISR: regenerate page every 60s
 
 const DashboardPage = async () => {
@@ -22,7 +31,7 @@ const DashboardPage = async () => {
       </h1>
 
       <div className="flex flex-wrap gap-4 mt-6">
-        {posts.map((post: any) => (
+        {posts.map((post: Post) => (
           <ArticlePrevCard
             key={post.id}
             id={post.id}

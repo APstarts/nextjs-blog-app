@@ -2,12 +2,10 @@ import { sql } from "@/lib/db";
 
 export const revalidate = 60; // regenerate page every 60s
 
-interface PageProps {
-  params: { id: string };
-}
 
-const PostPage = async ({ params }: PageProps) => {
-  const res = await fetch(`/api/posts/${params.id}`, { next: { revalidate: 60 } });
+const PostPage = async ({ params }: {params: Promise<{id: string}>}) => {
+  const {id} = await params;
+  const res = await fetch(`/api/posts/${id}`, { next: { revalidate: 60 } });
   if (!res.ok) throw new Error("Failed to fetch post");
   const post = await res.json();
 
