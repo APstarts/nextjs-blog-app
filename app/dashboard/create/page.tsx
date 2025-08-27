@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import RichTextEditor from "@/components/Tiptap";
 import Tiptap from "@/components/Tiptap";
 
 export default function CreatePostPage() {
