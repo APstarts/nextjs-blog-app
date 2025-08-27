@@ -14,6 +14,8 @@ export default function CreatePostPage() {
     e.preventDefault();
     setLoading(true);
 
+    console.log(title, content)
+
     try {
       const res = await fetch("/api/posts", {
         method: "POST",

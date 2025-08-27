@@ -1,13 +1,14 @@
 import React from 'react'
 import { signIn, signOut, auth } from "@/auth"
 import NewPostButton from './NewPostButton';
+import Link from 'next/link';
 
 const Navbar = async () => {
     const session = await auth();
   return (
     <div className='flex justify-between bg-amber-100 dark:bg-gray-900 dark:text-white py-5'>
         <div>
-            <p className='text-2xl font-extrabold pl-5'>The Equity Research Repository</p>
+            <Link href="/dashboard"><p className='text-2xl font-extrabold pl-5'>The Equity Research Repository</p></Link>
         </div>
         <div className='flex  justify-center items-center pr-5 space-x-4'>
             {session && session?.user ? (
