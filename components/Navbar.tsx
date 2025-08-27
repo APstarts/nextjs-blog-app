@@ -1,6 +1,5 @@
 import React from 'react'
 import { signIn, signOut, auth } from "@/auth"
-import NewPostButton from './NewPostButton';
 import Link from 'next/link';
 
 const Navbar = async () => {

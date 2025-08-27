@@ -1,4 +1,4 @@
-import { sql } from "@/lib/db";
+
 
 export const revalidate = 60; // regenerate page every 60s
 
