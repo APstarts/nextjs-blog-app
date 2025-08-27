@@ -24,7 +24,7 @@ export default function CreatePostPage() {
       if (!res.ok) throw new Error("Failed to create post");
 
       const newPost = await res.json();
-      router.push(`/dashboard/${newPost.slug}`);
+      router.push(`/dashboard/${newPost.id}`);
     } catch (err) {
       console.error(err);
       alert("Something went wrong while creating the post!");
