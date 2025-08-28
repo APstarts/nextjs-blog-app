@@ -21,8 +21,8 @@ const ArticlePrevCard: React.FC<ArticlePrevCardProps> = ({
   image,
 }) => {
   return (
-    <Link href={`/dashboard/${slug}`} prefetch> // prefetching the page when the link is visible in the viewport makes the navigation faster and appear near instant.
-      <div className="p-4 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
+    <Link href={`/dashboard/${slug}`} prefetch>
+      <div className="p-4 w-2xs h-40 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
         {image ? (
           <img
             src={image}

@@ -16,14 +16,13 @@ type Post = {
 export const revalidate = 60; // ISR: regenerate page every 60s this is to make sure that if any new post is added it will be reflected on the dashboard page without needing to restart the server. and the overall performance will not be affected as it will only regenerate the page once in 60 seconds.
 
 const DashboardPage = async () => {
-  const baseUrl = process.env.NEXTAUTH_URL || window.location.origin;
   const session = await auth();
   if (!session?.user) {
     throw new Error("Unauthorized");
   }
 
   // Fetch posts directly from DB
-  const res = await fetch(`${baseUrl}/api/posts`);
+  const res = await fetch(`http://localhost:3000/api/posts`);
   if (!res.ok) throw new Error("Failed to fetch posts");
   const posts = await res.json();
 

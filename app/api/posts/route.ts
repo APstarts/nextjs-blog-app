@@ -30,7 +30,7 @@ export async function POST(req: Request){
 //get all posts
 export async function GET(req: Request){
     try {
-        const posts = await sql`SELECT posts.id AS id, posts.title AS title, posts.content AS content, posts.created_at AS created_at, users.name AS author, users.image AS image FROM posts JOIN users ON posts.user_id = users.id`;
+        const posts = await sql`SELECT posts.id AS id, posts.title AS title, posts.content AS content, posts.created_at AS created_at, posts.slug AS slug, users.name AS author, users.image AS image FROM posts JOIN users ON posts.user_id = users.id`;
         if(!posts) return NextResponse.json({error: "No posts found"});
         return NextResponse.json(posts, {status: 200});
     } catch (error) {
