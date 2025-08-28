@@ -7,6 +7,7 @@ interface ArticlePrevCardProps {
   id: string;
   title: string;
   author: string;
+  slug: string;
   createdAt: string;
   image?: string | null;
 }
@@ -15,11 +16,12 @@ const ArticlePrevCard: React.FC<ArticlePrevCardProps> = ({
   id,
   title,
   author,
+  slug,
   createdAt,
   image,
 }) => {
   return (
-    <Link href={`/dashboard/${id}`} prefetch> // prefetching the page when the link is visible in the viewport makes the navigation faster and appear near instant.
+    <Link href={`/dashboard/${slug}`} prefetch> // prefetching the page when the link is visible in the viewport makes the navigation faster and appear near instant.
       <div className="p-4 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
         {image ? (
           <img

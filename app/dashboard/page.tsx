@@ -7,6 +7,7 @@ type Post = {
   id: string;
   title: string;
   author: string;
+  slug:string;
   created_at: string; // or Date
   image?: string;     // optional if images might be missing
 };
@@ -37,6 +38,7 @@ const DashboardPage = async () => {
           <ArticlePrevCard
             key={post.id}
             id={post.id}
+            slug={post.slug}
             title={post.title}
             author={post.author}
             createdAt={post.created_at}
