@@ -20,13 +20,13 @@ export default function CreatePostPage() {
       const res = await fetch("/api/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, content }), // now sending HTML
+        body: JSON.stringify({ title, content }), // now sending HTML as we are taking the content with html tags from the tiptap editor
       });
 
       if (!res.ok) throw new Error("Failed to create post");
 
-      const newPost = await res.json();
-      router.push(`/dashboard/${newPost.id}`);
+      const newPost = await res.json(); // Assuming the API returns the created post with its ID
+      router.push(`/dashboard/${newPost.id}`); // Redirect to the new post's page using its ID in the parameter.
     } catch (err) {
       console.error(err);
       alert("Something went wrong while creating the post!");
