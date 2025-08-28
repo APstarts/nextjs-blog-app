@@ -11,7 +11,7 @@ const Tiptap = ({onChange}: {onChange?: (content: string) => void }) => {
     extensions: [StarterKit, Bold, Italic, Strike],
     content: '<p>Hello World! 🌎️</p>',
     immediatelyRender: false,
-    onUpdate: ({ editor }) => {
+    onUpdate: ({ editor }) => {  //here we are using the onUpdate callback to get the content of the editor whenever it changes.
       onChange?.(editor.getHTML());
     }
   })
@@ -37,7 +37,7 @@ const Tiptap = ({onChange}: {onChange?: (content: string) => void }) => {
       {/* ProseMirror gets Tailwind typography */}
       <EditorContent
         editor={editor}
-        className="prose max-w-none [&_.ProseMirror]:focus:outline-none"
+        className="prose max-w-none [&_.ProseMirror]:focus:outline-none" //you inside the square bracket is for child element you research or ask chatgpt to understand how grabbing already existing classes on tailwind works.
       />
     </div>
   )

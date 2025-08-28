@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
     <main>
-      <div className="grid grid-cols-2">
+      <div className="flex flex-col md:grid md:grid-cols-2">
         <div className=" h-screen flex flex-col justify-center items-center">
           <div className="space-y-5 px-20">
             <h1 className="text-3xl font-extrabold uppercase">My equity research report repository</h1>

@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import NewPostButton from "@/components/NewPostButton";
 import ArticlePrevCard from "@/components/ArticlePrevCard";
 
+// Define the Post type and its properties
 type Post = {
   id: string;
   title: string;
@@ -11,7 +12,7 @@ type Post = {
 };
 
 
-export const revalidate = 60; // ISR: regenerate page every 60s
+export const revalidate = 60; // ISR: regenerate page every 60s this is to make sure that if any new post is added it will be reflected on the dashboard page without needing to restart the server. and the overall performance will not be affected as it will only regenerate the page once in 60 seconds.
 
 const DashboardPage = async () => {
   const baseUrl = process.env.NEXTAUTH_URL || window.location.origin;
