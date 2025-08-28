@@ -3,10 +3,10 @@
 export const revalidate = 60; // regenerate page every 60s
 
 
-const PostPage = async ({ params }: {params: Promise<{id: string}>}) => {
+const PostPage = async ({ params }: {params: Promise<{slug: string}>}) => {
   const baseUrl = process.env.NEXTAUTH_URL || window.location.origin;
-  const {id} = await params;
-  const res = await fetch(`${baseUrl}/api/posts/${id}`, { next: { revalidate: 60 } });
+  const {slug} = await params;
+  const res = await fetch(`${baseUrl}/api/posts/${slug}`, { next: { revalidate: 60 } });
   if (!res.ok) throw new Error("Failed to fetch post");
   const post = await res.json();
 

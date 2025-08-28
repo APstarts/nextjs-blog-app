@@ -26,7 +26,7 @@ export default function CreatePostPage() {
       if (!res.ok) throw new Error("Failed to create post");
 
       const newPost = await res.json(); // Assuming the API returns the created post with its ID
-      router.push(`/dashboard/${newPost.id}`); // Redirect to the new post's page using its ID in the parameter.
+      router.push(`/dashboard/${newPost.slug}`); // Redirect to the new post's page using its ID in the parameter.
     } catch (err) {
       console.error(err);
       alert("Something went wrong while creating the post!");
