@@ -30,9 +30,9 @@ const Tiptap = ({onChange}: {onChange?: (content: string) => void }) => {
       "
     >
       <div className='flex gap-2 mb-4'>
-        <button className='bg-gray-200 text-black w-6 rounded-md' onClick={() => {editor.chain().focus().toggleBold().run()}}>B</button>
-        <button className={`bg-gray-200 text-black w-6 rounded-md`} onClick={() => {editor.chain().focus().toggleItalic().run()}}>I</button>
-        <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`bg-gray-200 text-black w-max px-2 rounded-md`}>Strike</button>
+        <button type="button" className='bg-gray-200 text-black w-6 rounded-md' onClick={() => {editor.chain().focus().toggleBold().run()}}>B</button>
+        <button type="button" className={`bg-gray-200 text-black w-6 rounded-md`} onClick={() => {editor.chain().focus().toggleItalic().run()}}>I</button>
+        <button type="button" onClick={() => editor.chain().focus().toggleStrike().run()} className={`bg-gray-200 text-black w-max px-2 rounded-md`}>Strike</button>
       </div>
       {/* ProseMirror gets Tailwind typography */}
       <EditorContent
