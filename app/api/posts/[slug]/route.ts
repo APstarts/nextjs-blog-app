@@ -20,7 +20,7 @@ export async function PUT(req: NextRequest, {params}: {params: Promise<{slug: st
     };
 
     const {title, content} = await req.json();
-    const [updated] = await sql`UPDATE posts set title = ${title}, content = ${content} WHERE slug = ${slug}, user_id = ${session?.user?.id} returning *`;
+    const [updated] = await sql`UPDATE posts set title = ${title}, content = ${content} WHERE slug = ${slug} AND user_id = ${session?.user?.id} returning *`;
     if(!updated) return NextResponse.json({error: "Post not found"}, {status: 404});
     return NextResponse.json(updated);
 };
@@ -33,7 +33,7 @@ export async function DELETE(req: NextRequest, {params}: {params: Promise<{slug:
     if(!session?.user?.id){
         return NextResponse.json({error: "Unauthorized"}, {status: 401});
     };
-    const [deleted] = await sql`DELETE * FROM posts where slug = ${slug}, user_id = ${session?.user?.id} RETURNING id`;
+    const [deleted] = await sql`DELETE * FROM posts where slug = ${slug} AND user_id = ${session?.user?.id} RETURNING id`;
     if(!deleted) return NextResponse.json({error: "Post not found"}, {status: 404});
     return NextResponse.json({message: "Post deleted"});
 }
