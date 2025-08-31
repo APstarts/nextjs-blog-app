@@ -9,6 +9,7 @@ export default function CreatePostPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(""); // editor output
   const [loading, setLoading] = useState(false);
+  const url = process.env.NEXTAUTH_URL;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -17,7 +18,7 @@ export default function CreatePostPage() {
     console.log(title, content)
 
     try {
-      const res = await fetch("/api/posts", {
+      const res = await fetch(`${url}/api/posts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content }), // now sending HTML as we are taking the content with html tags from the tiptap editor

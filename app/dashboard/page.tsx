@@ -17,12 +17,13 @@ export const revalidate = 60; // ISR: regenerate page every 60s this is to make 
 
 const DashboardPage = async () => {
   const session = await auth();
+  const url = process.env.NEXTAUTH_URL
   if (!session?.user) {
     throw new Error("Unauthorized");
   }
 
   // Fetch posts directly from DB
-  const res = await fetch(`http://localhost:3000/api/posts`);
+  const res = await fetch(`${url}/api/posts`);
   if (!res.ok) throw new Error("Failed to fetch posts");
   const posts = await res.json();
 

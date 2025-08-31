@@ -3,10 +3,11 @@ import { redirect } from 'next/navigation'
 import EditForm from './EditForm'
 
 const EditPage = async ({ params }: { params: { slug: string } }) => {
-  const session = await auth()
+  const session = await auth();
+  const url = process.env.NEXTAUTH_URL;
   if (!session) redirect('/login')
 
-  const res = await fetch(`http://localhost:3000/api/posts/${params.slug}`, { cache: 'no-store' })
+  const res = await fetch(`${url}/api/posts/${params.slug}`, { cache: 'no-store' })
   if (!res.ok) throw new Error('Failed to fetch post')
 
   const post = await res.json()
