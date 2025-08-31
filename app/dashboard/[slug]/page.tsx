@@ -12,8 +12,6 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   });
   if (!res.ok) throw new Error("Failed to fetch post");
   const post = await res.json();
-  console.log(`post user id is: ${post.userid} and type is ${typeof post.userid}`);
-  console.log(`session user id is: ${session?.user?.id} and type is ${typeof session?.user?.id}`);
 
   return (
     <div className="relative max-w-3xl mx-auto mt-10 px-4">
@@ -42,6 +40,17 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </button>
       </form>
       )}
+      <form action={async () => {
+        "use server";
+        redirect(`/dashboard/${post.slug}/edit`);
+      }}>
+        <button
+          className="absolute top-20 right-20 bg-gray-700 hover:bg-blue-400 cursor-pointer hover:shadow-lg text-white p-2 rounded-md"
+          type="submit"
+        >
+          Edit
+        </button>
+      </form>
       
       <h1 className="text-3xl font-extrabold">{post.title}</h1>
       <div className="flex items-center gap-3 mt-2 mb-6">

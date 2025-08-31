@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { sql } from "@/lib/db";
 import { NextResponse, NextRequest } from "next/server";
-
+import slugify from "slugify";
 
 
 
@@ -22,7 +22,8 @@ export async function PUT(req: NextRequest, {params}: {params: Promise<{slug: st
     };
 
     const {title, content} = await req.json();
-    const [updated] = await sql`UPDATE posts set title = ${title}, content = ${content} WHERE slug = ${slug} AND user_id = ${session?.user?.id} returning *`;
+    const newSlug = slugify(title, {lower: true, strict: true});
+    const [updated] = await sql`UPDATE posts set title = ${title}, content = ${content}, slug = ${newSlug} WHERE slug = ${slug} AND user_id = ${session?.user?.id} returning *`;
     if(!updated) return NextResponse.json({error: "Post not found"}, {status: 404});
     return NextResponse.json(updated);
 };

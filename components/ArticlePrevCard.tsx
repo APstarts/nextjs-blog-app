@@ -22,7 +22,7 @@ const ArticlePrevCard: React.FC<ArticlePrevCardProps> = ({
 }) => {
   return (
     <Link href={`/dashboard/${slug}`} prefetch>
-      <div className="p-4 w-2xs h-40 border rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
+      <div className="p-4 w-2xs h-40 border border-gray-300 rounded-lg shadow hover:shadow-md transition flex gap-4 items-center cursor-pointer">
         {image ? (
           <img
             src={image}

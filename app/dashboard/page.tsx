@@ -27,12 +27,12 @@ const DashboardPage = async () => {
   const posts = await res.json();
 
   return (
-    <div className="px-4 md:px-10 py-6">
+    <div className="px-4 md:px-30 py-6">
       <h1 className="text-center text-3xl font-extrabold">
         Welcome to the repository of Equity Researches
       </h1>
 
-      <div className="flex flex-wrap gap-4 mt-6">
+      <div className="flex flex-wrap justify-center gap-4 mt-6">
         {posts.map((post: Post) => (
           <ArticlePrevCard
             key={post.id}
