@@ -4,7 +4,7 @@ import EditForm from './EditForm'
 
 const EditPage = async ({ params }: { params: { slug: string } }) => {
   const session = await auth();
-  const url = process.env.NEXTAUTH_URL;
+  const url = process.env.NEXTAUTH_URL || "https://nextjs-blog-app-sooty.vercel.app" || window.location.origin
   if (!session) redirect('/login')
 
   const res = await fetch(`${url}/api/posts/${params.slug}`, { cache: 'no-store' })

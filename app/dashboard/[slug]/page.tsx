@@ -7,7 +7,7 @@ export const revalidate = 60; // regenerate page every 60s
 const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const session = await auth();
-  const url = process.env.NEXTAUTH_URL
+  const url = process.env.NEXTAUTH_URL || "https://nextjs-blog-app-sooty.vercel.app" || window.location.origin
   const res = await fetch(`${url}/api/posts/${slug}`, {
     next: { revalidate: 60 },
   });

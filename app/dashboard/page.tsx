@@ -17,7 +17,7 @@ export const revalidate = 60; // ISR: regenerate page every 60s this is to make 
 
 const DashboardPage = async () => {
   const session = await auth();
-  const url = process.env.NEXTAUTH_URL
+  const url = process.env.NEXTAUTH_URL || "https://nextjs-blog-app-sooty.vercel.app" || window.location.origin
   if (!session?.user) {
     throw new Error("Unauthorized");
   }
