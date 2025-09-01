@@ -8,11 +8,10 @@ const EditForm = ({ post }: { post: any }) => {
   const [content, setContent] = useState(post.content)
   const [title, setTitle] = useState(post.title)
   const router = useRouter()
-  const url = process.env.NEXTAUTH_URL || "https://nextjs-blog-app-sooty.vercel.app" || window.location.origin;
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault()
-    const res = await fetch(`${url}/api/posts/${post.slug}`, {
+    const res = await fetch(`/api/posts/${post.slug}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content }),

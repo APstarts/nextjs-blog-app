@@ -54,7 +54,8 @@ const Tiptap = ({ onChange }: { onChange?: (content: string) => void }) => {
       {/* Editor */}
       <EditorContent
         editor={editor}
-        className="prose max-w-none [&_.ProseMirror]:focus:outline-none"
+        className="prose max-w-none [&_.ProseMirror]:focus:outline-none [&_ul]:list-disc [&_ul]:pl-6
+    [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600"
       />
     </div>
   )

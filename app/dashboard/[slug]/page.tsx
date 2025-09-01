@@ -7,7 +7,7 @@ export const revalidate = 60; // regenerate page every 60s
 const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const session = await auth();
-  const url = process.env.NEXTAUTH_URL || "https://nextjs-blog-app-sooty.vercel.app" || window.location.origin
+  const url = process.env.NEXTAUTH_URL;
   const res = await fetch(`${url}/api/posts/${slug}`, {
     next: { revalidate: 60 },
   });
@@ -71,7 +71,12 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
           {new Date(post.created_at).toLocaleDateString()}
         </p>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className="prose max-w-none
+    [&_ul]:list-disc [&_ul]:pl-6
+    [&_ol]:list-decimal [&_ol]:pl-6
+    [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600
+    [&_pre]:bg-gray-100 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto
+    [&_code]:bg-gray-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded" dangerouslySetInnerHTML={{ __html: post.content }} />
     </div>
   );
 };
