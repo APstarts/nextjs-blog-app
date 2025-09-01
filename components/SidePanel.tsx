@@ -38,12 +38,12 @@ export default function SidePanel({
           <nav>
             <ul className="flex flex-col gap-4 text-lg">
               <li>
-                <Link href="/" onClick={onClose} className="block hover:text-orange-500">
+                <Link href="/dashboard" onClick={onClose} className="block hover:text-orange-500">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" onClick={onClose} className="block hover:text-orange-500">
+                <Link href="/dashboard/myposts" onClick={onClose} className="block hover:text-orange-500">
                   Your posts
                 </Link>
               </li>

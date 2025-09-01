@@ -41,7 +41,8 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </button>
       </form>
       )}
-      <form action={async () => {
+      {post.userid === session?.user?.id && (
+        <form action={async () => {
         "use server";
         redirect(`/dashboard/${post.slug}/edit`);
       }}>
@@ -52,6 +53,8 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
           Edit
         </button>
       </form>
+      )}
+      
       
       <h1 className="text-3xl font-extrabold">{post.title}</h1>
       <div className="flex items-center gap-3 mt-2 mb-6">
