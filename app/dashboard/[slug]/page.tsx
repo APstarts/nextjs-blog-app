@@ -16,63 +16,70 @@ const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <div className="relative max-w-3xl mx-auto mt-10 px-4">
-      {post.userid === session?.user?.id &&(
-        <form
-        action={async () => {
-          "use server";
-          const cookieStore = cookies();
-          await fetch(`${url}/api/posts/${post.slug}`, {
-            method: "DELETE",
-            credentials: "include",
-            headers: {
-              Cookie: cookieStore.toString(),
-            }
-          });
-
-          redirect("/dashboard");
-          
-        }}
-      >
-        <button
-          className="absolute top-20 right-2 bg-gray-700 hover:bg-red-400 cursor-pointer hover:shadow-lg text-white p-2 rounded-md"
-          type="submit"
-        >
-          Delete
-        </button>
-      </form>
-      )}
-      {post.userid === session?.user?.id && (
-        <form action={async () => {
-        "use server";
-        redirect(`/dashboard/${post.slug}/edit`);
-      }}>
-        <button
-          className="absolute top-20 right-20 bg-gray-700 hover:bg-blue-400 cursor-pointer hover:shadow-lg text-white p-2 rounded-md"
-          type="submit"
-        >
-          Edit
-        </button>
-      </form>
-      )}
-      
-      
       <h1 className="text-3xl font-extrabold">{post.title}</h1>
-      <div className="flex items-center gap-3 mt-2 mb-6">
-        {post.image ? (
-          <img
-            src={post.image}
-            alt={post.author}
-            className="w-10 h-10 rounded-full"
-          />
-        ) : (
-          <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
-            {post.author[0]}
-          </div>
-        )}
-        <p className="text-gray-400">By {post.author}</p>
-        <p className="text-gray-400">
-          {new Date(post.created_at).toLocaleDateString()}
-        </p>
+      <div className="flex items-center justify-between gap-3 mt-2 mb-6">
+        <div className="flex items-center gap-3">
+          {post.image ? (
+            <img
+              src={post.image}
+              alt={post.author}
+              className="w-10 h-10 rounded-full"
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+              {post.author[0]}
+            </div>
+          )}
+          <p className="text-gray-400">By {post.author}</p>
+          <p className="text-gray-400">
+            {new Date(post.created_at).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+        </div>
+        {/* code containing the delete and edit buttons */}
+          <div className="flex gap-2">
+            {post.userid === session?.user?.id &&(
+            <form
+            action={async () => {
+              "use server";
+              const cookieStore = cookies();
+              await fetch(`${url}/api/posts/${post.slug}`, {
+                method: "DELETE",
+                credentials: "include",
+                headers: {
+                  Cookie: cookieStore.toString(),
+                }
+              });
+
+              redirect("/dashboard");
+              
+            }}
+          >
+            <button
+              className=" bg-gray-700 hover:bg-red-400 cursor-pointer hover:shadow-lg text-white p-2 rounded-md"
+              type="submit"
+            >
+              Delete
+            </button>
+          </form>
+          )}
+          {post.userid === session?.user?.id && (
+            <form action={async () => {
+            "use server";
+            redirect(`/dashboard/${post.slug}/edit`);
+          }}>
+            <button
+              className=" bg-gray-700 hover:bg-blue-400 cursor-pointer hover:shadow-lg text-white p-2 rounded-md"
+              type="submit"
+            >
+              Edit
+            </button>
+          </form>
+          )}
+        </div>
       </div>
       <div className="prose max-w-none
     [&_ul]:list-disc [&_ul]:pl-6

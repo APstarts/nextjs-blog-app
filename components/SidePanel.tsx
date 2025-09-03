@@ -27,12 +27,12 @@ export default function SidePanel({
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-6">
+        <div className="relative p-6">
           <button
             onClick={onClose}
-            className="mb-4 px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
+            className="absolute top-1 right-2 mb-4 px-2 py-1 cursor-pointer hover:text-orange-500"
           >
-            Close
+            X
           </button>
 
           <nav>
