@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "The Equity Research Report Directory",
-  description: "A collection of equity research reports by Anurag Pal",
+  description: "A collection of equity research reports shared by the users",
 };
 
 export default function RootLayout({
