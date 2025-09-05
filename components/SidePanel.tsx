@@ -7,9 +7,11 @@ import Link from "next/link";
 export default function SidePanel({
   open,
   onClose,
+  sessionId,
 }: {
   open: boolean;
   onClose: () => void;
+  sessionId: string | undefined;
 }) {
   return (
     <>
@@ -43,7 +45,7 @@ export default function SidePanel({
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/myposts" onClick={onClose} className="block hover:text-orange-500">
+                <Link href={`/dashboard/myposts/${sessionId}`} onClick={onClose} className="block hover:text-orange-500">
                   Your posts
                 </Link>
               </li>

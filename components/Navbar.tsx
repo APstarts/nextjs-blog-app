@@ -5,10 +5,11 @@ import NavbarClient from './NavbarClient';
 
 const Navbar = async () => {
     const session = await auth();
+    const id = session?.user?.id;
   return (
     <div className='flex justify-between bg-amber-100 dark:bg-gray-900 dark:text-white py-5'>
         <div className='flex items-center'>
-          <NavbarClient />
+          <NavbarClient sessionId={id} />
             <Link href="/dashboard"><p className='text-2xl font-extrabold pl-5'>The Equity Research Repository</p></Link>
         </div>
         <div className='flex  justify-center items-center pr-5 space-x-4'>

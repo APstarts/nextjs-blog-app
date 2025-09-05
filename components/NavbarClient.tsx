@@ -4,7 +4,7 @@
 import { useState } from "react";
 import SidePanel from "./SidePanel";
 
-export default function NavbarClient() {
+export default function NavbarClient({ sessionId }: { sessionId: string | undefined }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ export default function NavbarClient() {
       </button>
 
       {/* Side panel component */}
-      <SidePanel open={open} onClose={() => setOpen(false)} />
+      <SidePanel sessionId={sessionId} open={open} onClose={() => setOpen(false)} />
     </>
   );
 }
