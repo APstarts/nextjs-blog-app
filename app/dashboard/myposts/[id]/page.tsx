@@ -12,8 +12,8 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
         <h1 className='text-3xl font-extrabold text-center mt-10'>Your Posts</h1>
         {posts.map((post: { title: string; content: string; id: string; created_at:string; slug: string }) => (
             <Link key={post.id} href={`/dashboard/${post.slug}`}>
-            <div className='max-w-3xl mx-auto px-4 py-2 mb-4 flex justify-between items-center border border-gray-300 rounded-lg hover:shadow-lg duration-300'>
-                <p className='text-xl'>{post.title}</p><p>{new Date(post.created_at).toLocaleDateString(undefined, {day: "numeric", month: "long", year: "numeric"})}</p>
+            <div className='max-w-3xl md:mx-auto mx-2 px-4 py-2 mb-4 flex justify-between items-center border border-gray-300 rounded-lg hover:shadow-lg duration-300'>
+                <p className='text-xs md:text-xl'>{post.title}</p><p className='text-xs md:text-xl text-gray-500'>{new Date(post.created_at).toLocaleDateString(undefined, {day: "numeric", month: "long", year: "numeric"})}</p>
             </div>
             </Link>
         ))}
